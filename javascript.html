@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Example of editing a javascript game, flappy bird">
+    <title>Rory's Portfolio :: Javascript</title>
+    <!--fontawesome stylesheet-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- bootstrap Stylesheet-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css" class="img-fluid logo">
+
+<!--CSS for Javascript game-->
+    <style>
+      canvas{
+      border: 1px solid #d3d3d3;
+      background-image: 
+  url(images/game-background.jpg);
+  background-size: cover;
+      }
+    </style>
+  </head>
+
+<!--This is what starts the game. -->
+  <body onload="startGame()">
+    <header class="home-hero-header">
+      <img src="images/logo-small.png" height="72" width="160">
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="javascript.html">Javascript</a></li>
+      </ul>
+    </nav>
+  <main>
+    <h1>Javascript Flappy Bird Game</h1>
+    <hr>
+    <p>I made this game while completing the W3 Schools JavaScript tutorial. I enhanced the game by making it faster, changing the gravity and gravity speed, adding CSS, and a background.</p>
+
+    <h3>Use the FLAP WINGS button to stay in the air. How long can you fly?</h3>
+   <!--This div holds the game and game button -->
+   <div id="game" >
+  
+
+   <!--There are two versions of controls...one for desktop that uses a mouse and one for mobile devices The desktop has the desktop class and the mobile has the mobile class-->
+<div class="game-controls desktop">
+  <button class="myButton" onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">FLAP WINGS</button>
+  <a href="" ><button class="myButton">PLAY AGAIN</button></a>
+</div>
+          
+<div class="game-controls mobile">
+  <button class="myButton" ontouchstart="accelerate(-0.2)" ontouchend="accelerate(0.05)">FLAP WINGS</button>
+  <a href="" ><button class="myButton">PLAY AGAIN</button></a>
+</div>
+
+
+<!--javaScript for the game-->
+   <script>
+      /* Add variables for the height and width */
+var canvasWidth = 640;
+var canvasHeight = 360;
+/*Test to see if I have a screen less than 768 pixels and if so, change the canvas size */
+if (window.innerWidth < 768){
+  canvasWidth = 300;
+  canvasHeight= 300;
+}
+
+
+      var myGamePiece;
+      var myObstacles = [];
+      var myScore;
+      
+      function startGame() {
+          myGamePiece = new component(30, 30, "#D03333", 10, 120);
+          myGamePiece.gravity = 0.89;
+          myScore = new component("30px", "Consolas", "#D03387", 420, 40, "text");
+          myGameArea.start();
+      }
+      
+      var myGameArea = {
+          canvas : document.createElement("canvas"),
+          start : function() {
+              this.canvas.width = canvasWidth; /*changed the number variable*/
+              this.canvas.height = canvasHeight; /*changed the number variable*/
+              this.context = this.canvas.getContext("2d");
+              var myGame = document.getElementById("game");
+              myGame.insertBefore(this.canvas, myGame.childNodes[0]);        
+              this.frameNo = 0;
+              this.interval = setInterval(updateGameArea, 15);
+           },
+          clear : function() {
+              this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+          }
+      }
+      
+      function component(width, height, color, x, y, type) {
+          this.type = type;
+          this.score = 0;
+          this.width = width;
+          this.height = height;
+          this.speedX = 0;
+          this.speedY = 0;    
+          this.x = x;
+          this.y = y;
+          this.gravity = 2;
+          this.gravitySpeed = 2;
+          this.update = function() {
+              ctx = myGameArea.context;
+              if (this.type == "text") {
+                  ctx.font = this.width + " " + this.height;
+                  ctx.fillStyle = color;
+                  ctx.fillText(this.text, this.x, this.y);
+              } else {
+                  ctx.fillStyle = color;
+                  ctx.fillRect(this.x, this.y, this.width, this.height);
+              }
+          }
+          this.newPos = function() {
+              this.gravitySpeed += this.gravity;
+              this.x += this.speedX;
+              this.y += this.speedY + this.gravitySpeed;
+              this.hitBottom();
+          }
+          this.hitBottom = function() {
+              var rockbottom = myGameArea.canvas.height - this.height;
+              if (this.y > rockbottom) {
+                  this.y = rockbottom;
+                  this.gravitySpeed = 0;
+              }
+           }
+          this.crashWith = function(otherobj) {
+              var myleft = this.x;
+              var myright = this.x + (this.width);
+              var mytop = this.y;
+              var mybottom = this.y + (this.height);
+              var otherleft = otherobj.x;
+              var otherright = otherobj.x + (otherobj.width);
+              var othertop = otherobj.y;
+              var otherbottom = otherobj.y + (otherobj.height);
+              var crash = true;
+              if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+                  crash = false;
+              }
+              return crash;
+          }
+      }
+      
+      function updateGameArea() {
+          var x, height, gap, minHeight, maxHeight, minGap, maxGap;
+          for (i = 0; i < myObstacles.length; i += 1) {
+              if (myGamePiece.crashWith(myObstacles[i])) {
+                  return;
+              } 
+          }
+          myGameArea.clear();
+          myGameArea.frameNo += 1;
+          if (myGameArea.frameNo == 1 || everyinterval(150)) {
+              x = myGameArea.canvas.width;
+              minHeight = 20;
+              maxHeight = 200;
+              height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+              minGap = 80;
+              maxGap = 200;
+              gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+              myObstacles.push(new component(20, height, "#EF5964", x, 0));
+              myObstacles.push(new component(20, x - height - gap, "#EF5964", x, height + gap));
+          }
+          for (i = 0; i < myObstacles.length; i += 1) {
+              myObstacles[i].x += -1;
+              myObstacles[i].update();
+          }
+          myScore.text="SCORE: " + myGameArea.frameNo;
+          myScore.update();
+          myGamePiece.newPos();
+          myGamePiece.update();
+      }
+      
+      function everyinterval(n) {
+          if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+          return false;
+      }
+      
+      function accelerate(n) {
+          myGamePiece.gravity = n;
+      }
+    </script>
+  </div>
+  </main>
+  <footer class="home-hero-footer">
+    &nbsp;
+    <div class="container-fluid">
+      <div class="row"> <!--footer row-->
+              <div class="col-sm-3">
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                    <p>Follow us on Github</p>
+                </div>
+                <div class="col-sm-3">
+                   <i class="fa fa-instagram" aria-hidden="true"></i>
+                   <p>Connect on Instagram</p>
+                </div>
+                <div class="col-sm-3">
+                  <i class="fa fa-youtube" aria-hidden="true"></i>
+                   <a href="https://youtube.com/@micahstoll75?si=VMclvAm6xz0S5e2z" target="_blank">Follow us on YouTube</a>
+                </div>
+                <div class="col-sm-3">
+                   <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                   <a href="mailto:micahstoll@gmail.com">Email Me</a>
+                </div>
+            </div> <!--footer row closing-->
+        </div>
+        <br><small>I designed this web page for my Web Fundamentals course at Saint Paul College. This page includes use of Bootstrap columns and Font Awesome icons. The photos for this assignment are my own.</small>
+
+    <br><small>&copy; Rory Stoll-Green. All rights reserved.</small>
+    
+
+  </footer>
+  <!--jQuery, Popper, and Bootstrap Javascript files-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

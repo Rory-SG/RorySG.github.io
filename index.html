@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1" />
+	<meta name="description" content="This is a portfolio for Rory Stoll-Green, a student at Saint Paul College">
+	<title>Rory's Portfolio :: Home</title>
+	<link rel="icon" type="image/ico" href="logo.png">
+	<!--fontawesome stylesheet-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- bootstrap Stylesheet-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<header class="home-hero-header">
+		<img src="images/logo-small.png" height="72" width="160" class="img-fluid logo">
+		
+	</header>
+	<nav>
+  		<ul>
+    		<li><a href="index.html">Home</a></li>
+    		<li><a href="resume.html">Resume</a></li>
+    		<li><a href="portfolio.html">Portfolio</a></li>
+    		<li><a href="javascript.html">Javascript</a></li>
+  		</ul>
+	</nav>
+		<!-- This is the div for the hero image -->
+	<div class="home-hero">
+		<h1>Welcome to my Portfolio!</h1>
+	</div>
+	<main>
+		<div class="container-fluid">
+       		<div class="row"> <!--first Row-->
+            	<div class="col-sm-6">
+                	<h1>About Me</h1>
+
+                    <p>My name is Rory Stoll-Green and I study Computer Programming at Saint Paul College in St. Paul, Minnesota. My ideal field is video game programming but I have a lot of interest in Web Design and Web Development. I made this website as a portfolio of my skills developing websites.</p><br>
+
+                    <p>I have taken the following classes at Saint Paul College:</p>
+                    <ul>
+                        <li>Photoshop 1</li>
+                        <li>Computer Science and Information Systems</li>
+                        <li>Web Fundamentals, HTML and CSS</li>           
+
+                    </ul><br>
+                    <p>Over the next few semesters I'm goint to take more Web Design and Web Development classes to obtain the Web Development Certificate</p><br>
+
+                    <p>I have also taken classes at Summit Academy Opportunities Industrialization Center and received an Information Technology Certification. In those classes I gained experience with both computer hardware and software.</p>
+            	</div>
+                <div class="col-sm-6">
+                    <img src="images/index-rory.jpg" height="1192" width="1080" alt="Photo of Rory heading to a wedding (5/19/2025)" class="home-photo">
+                </div>
+       		</div> <!--1st row closing-->
+       		<br>
+       		<div class="nav row"> <!--second Row-->
+                     <div class="col-sm-4">
+                     	<a href="resume.html" class="button-design"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;Resume</a><hr>
+                     	<p>This page shows my work history, skills, and education</p>
+                     </div>
+                     <div class="col-sm-4">
+                   		<a href="portfolio.html" class="button-design"><i class="fa fa-folder-o" aria-hidden="true"></i>&nbsp;Portfolio</a><hr>
+                   		<p>This page highlights some of my previous projects</p>
+                     </div>
+                     <div class="col-sm-4">
+                   		<a href="javascript.html" class="button-design"><i class="fa fa-code" aria-hidden="true"></i>&nbsp;Javascript</a><hr>
+                   		<p>This page contains a Javascript game I edited for practice</p>
+                     </div>
+
+       		</div> <!--2nd row closing-->
+       		<br>
+       		<br>
+			<div class="gallery row"> <!--third Row-->
+          		<div class="col-sm-12">
+          			<h2>Photos edited with Adobe Creative Cloud</h2>
+
+                	<div class="gallery">
+					    <div class="preview">
+					        <img id="preview" src="images/gallery1.jpg" style="display:block;margin:0 auto;" alt="Temple in China with Adobe's colorization and soft light features" height="600" width="800"/>
+					    </div>
+
+					    <div class="gallery-thumbnails" style="margin:0 auto;text-align:center;">
+					        <img onclick="document.getElementById('preview').src=document.getElementById('img1').src" id="img1" src="images/gallery2.jpg" alt="Fire station in Santa Catalina with Adobe's colorization and soft light features" />
+					        <img onclick="document.getElementById('preview').src= document.getElementById('img2').src;" id="img2" src="images/gallery3.jpeg" alt="Collage using Adobe tools"  />
+					        <img onclick="document.getElementById('preview').src = document.getElementById('img3').src;" id="img3" src="images/gallery4.jpg" alt="Santa Cantalina Sea view with colorization" />
+					        <img onclick="document.getElementById('preview').src = document.getElementById('img4').src;" id="img4" src="images/gallery5.jpg" alt="Merging my nephew into my grandma's driveway" />
+					    	</div>
+						</div>
+               		</div>
+            </div> <!--3rd row closing-->
+
+		</div> <!--closes container-fluid-->
+
+	</main>
+	<footer class="home-hero-footer">
+		&nbsp;
+		<div class="container-fluid">
+			<div class="row"> <!--footer row-->
+          		<div class="col-sm-3">
+          			<i class="fa fa-github-alt" aria-hidden="true"></i>
+                   	<p>Follow us on Github</p>
+               	</div>
+               	<div class="col-sm-3">
+                   <i class="fa fa-instagram" aria-hidden="true"></i>
+                   <p>Connect on Instagram</p>
+               	</div>
+               	<div class="col-sm-3">
+               		<i class="fa fa-youtube" aria-hidden="true"></i>
+                   <a href="https://youtube.com/@micahstoll75?si=VMclvAm6xz0S5e2z" target="_blank">Follow us on YouTube</a>
+               	</div>
+               	<div class="col-sm-3">
+                   <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                   <a href="mailto:micahstoll@gmail.com">Email Me</a>
+               	</div>
+            </div> <!--footer row closing-->
+        </div>
+
+		<small>&copy; Rory Stoll-Green. All rights reserved.</small>
+		
+
+	</footer>
+	<!--jQuery, Popper, and Bootstrap Javascript files-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

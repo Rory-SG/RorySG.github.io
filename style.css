@@ -1,0 +1,307 @@
+@import
+url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import
+url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* This is the CSS for the hero image*/
+.home-hero{
+   background-image: url(images/milkyway-heroimage.jpg);
+   height: 200px;
+   background-size: cover;
+   background-position: top center;
+}
+
+.home-hero-header{
+  text-align: center;
+   background-color: white;
+   height: 100px;
+   background-size: cover;
+   background-position: top center;
+   margin: 0 auto;
+   padding: 20px 10px;
+}
+
+.home-hero h1{
+  font-size: 70px;
+  text-shadow: 4px 4px 4px floralwhite;
+  padding: 60px 0;
+  margin: 0;
+  text-align: center;
+}
+
+.home-hero-footer{
+   background-image: url(images/milkyway-heroimage.jpg);
+   height: 140px;
+   background-size: cover;
+   background-position: bottom center;
+}
+
+.home-photo{
+  max-width: 600px;
+  height: auto;
+  margin: 0;
+}
+
+.fa{
+  font-size: 2em;
+  color: #ffffff;
+}
+
+#game{
+  margin-top: 0;
+  margin-left: auto;
+  margin-bottom: 0;
+  margin-right: auto;
+  display: block;
+  padding-left: 25%;
+}
+
+
+a.button-design{
+   color: floralwhite;
+   border-radius: 14px;
+   text-decoration: none;
+   padding: 20px 20px;
+   font-weight: bold;
+}
+
+a.button-design:link{
+   background-color: #990033;
+}
+
+a.button-design:hover{
+   background-color: lightseagreen;
+   text-decoration: none;
+}
+
+footer{
+  clear: both;
+  color: #ccccff;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+h1, h2, h3{
+  font-family: 'Luckiest Guy', cursive;
+  text-align: center;
+    padding: 3%, 0,0,0;
+    color: #E44C66;
+    text-shadow: 3px 3px 3px #000033
+}
+
+/* Website Links except the nav */
+
+a:link{
+  color: #ffffff;
+}
+a:visited{
+  color: #ffffff;
+}
+a:hover{
+  color: #B5A4DB;
+  text-decoration: none;
+}
+a:active{
+  color: black;
+}
+
+/* Navigation */
+nav{
+  background-color: #ffffff;
+  background-image: radial-gradient( #E44C66, #000000);
+  border-top: 3px solid #E44C66;
+  border-bottom: 3px solid #E44C66;
+}
+
+nav ul{
+  list-style-type: none;
+  text-align: center;
+  margin: 8px 0;
+  padding: 0;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+nav li{
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+nav a{
+  text-decoration: none;
+}
+
+nav a:link{
+  color: #F1FFFF;
+  text-decoration: none;
+}
+nav a:visited{
+  color: #F1FFFF;
+  text-decoration: none;
+}
+nav a:hover{
+  color: #ffcc99;
+}
+nav a:active{
+  color: #cc3399;
+}
+
+/* Main */
+.resume-headers{
+  text-align: left;
+}
+
+.nav{
+  padding: 150px;
+}
+
+.gallery{
+  padding-bottom: 50px;
+}
+
+main{
+max-width: 1200px;
+margin: 20px auto;
+padding: 10px;
+}
+
+main h3{
+  text-shadow: 3px 3px 3px #000033;
+  font-size: 2em;
+}
+
+.resume{
+  border: 2px;
+  box-shadow: 3px 3px 3px 3px;
+  padding: 25px 15px;
+}
+
+.resume-h1{
+  text-shadow: 5px 5px 10px #000033;
+}
+
+.portfolio-image{
+  box-shadow: 3.5px 3.5px 3.5px 3.5px gray;
+  padding: 20px;
+}
+
+.portfolio{
+  padding: 75px 0px;
+}
+
+/* Footer */
+footer{
+  border-top: #0d2bbf 3px solid;
+  text-align: center;
+  text-shadow: 4px 4px 4px floralwhite;
+  color: #ffffff;
+  height: 100%;
+  max-width: 100%;
+}
+
+/*CSS for Gallery*/
+.gallery .preview{
+    width: 100%;
+    height: auto;
+}
+
+.gallery .gallery-thumbnails img {
+    width: 100px;
+    height: 75px;
+    margin: 3px 0px 10px 40px;
+    border: 2px solid #990033;
+}
+
+.gallery .gallery-thumbnails img:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.gallery .preview img#preview {
+    padding: 1px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto !important;
+    display: block !important;
+    border: 4px solid #990033;
+    border-radius: 22%;
+}
+
+
+.mobile{
+  display: none;
+}
+
+/*CSS without a media query--applies to all sizes unless overridden*/
+@media only screen and (max-width: 1024px) {
+h1{
+    font-size: 4em;
+ }
+ }
+
+/* CSS Adjustments for Tablets */
+@media only screen and (max-width: 1024px) {
+  h1{
+      font-size: 3em;
+  }
+
+.desktop{
+  display: none;
+}
+
+.mobile{
+  display: block;
+}
+}
+
+/* CSS Adjustments for Smartphones */
+@media only screen and (max-width: 768px){
+  .desktop{
+    display:none;
+  }
+
+   h1{
+      font-size: 2em;
+  }
+
+  .mobile{
+    display: block;
+  }
+}
+
+
+  .home-hero{
+    height: 125px;
+    display: block;
+  }
+  .home-hero h1{
+    height: 125px;
+    font-size: 1.5em;
+    padding-top: 45px;
+  }
+  .float-left,
+  .float-right{
+    display: none;
+  }
+  .text-box{
+    float: none;
+    max-width: 100%;
+    display: block;
+  }
+  nav ul{
+    padding: 0;
+    margin: 0;
+  }
+  nav li{
+    display: inline-block;
+    padding: .5em 1em;
+    text-decoration: none;
+  }
+}
+
